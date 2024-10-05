@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    <p><strong>Text:</strong> {{ text }}</p>
+    <h2><strong>LSTM Model Prediction:</strong></h2>
+    <p><strong>Answer: </strong>{{ result_lstm }}</p>
+    <h2><strong>Gemini API Model Prediction:</strong></h2>
+	<p>{{ result_gemini | safe }}</p>
+    <a href="/">Go Back</a>
+</body>
+</html>

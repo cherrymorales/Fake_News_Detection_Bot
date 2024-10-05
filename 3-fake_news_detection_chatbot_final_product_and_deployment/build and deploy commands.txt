@@ -1,0 +1,18 @@
+# Build the image
+docker build -t gemini_fake_news_detection_bot .
+
+# Run container locally for testing - turn of container before deploying to google cloud
+docker run -e GEMINI_API_KEY=$GEMINI_API_KEY -e TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN -p 8080:8080 gemini_fake_news_detection_bot
+
+# Tag and deploy image to google cloud
+docker tag gemini_fake_news_detection_bot gcr.io/mini-project-bot-server-1/gemini-fake-news-detection-bot
+docker push gcr.io/mini-project-bot-server-1/gemini-fake-news-detection-bot
+
+# Run container in Google Cloud - $50 per month upkeep
+gcloud run deploy gemini-fake-news-detection-bot \
+  --image gcr.io/mini-project-bot-server-1/gemini-fake-news-detection-bot \
+  --platform managed \
+  --region us-central1 \
+  --set-env-vars GEMINI_API_KEY=$GEMINI_API_KEY,TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN \
+  --allow-unauthenticated \
+  --cpu-always-allocated
