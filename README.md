@@ -12,6 +12,7 @@ To run the Fake News Detection System, you will need:
 - **Python 3.8+**
 - A **Telegram bot token** from BotFather (if using the Telegram interface)
 - A **Google Gemini API key**
+- Dataset from Kaggle's [fake-and-real-news-dataset](https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset)
 
 ## Setup Instructions
 
